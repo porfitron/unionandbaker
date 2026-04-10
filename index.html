@@ -47,14 +47,14 @@
             overflow: hidden;
         }
     </style>
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YN76XZSY41"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N42PWECB4"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', 'G-YN76XZSY41');
+      gtag('config', 'G-0N42PWECB4');
     </script>
 </head>
 <body class="text-gray-700">
@@ -67,7 +67,7 @@
                     <span class="text-xl font-bold text-gray-900 tracking-tight">Union and Baker, LLC</span>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <button onclick="openInquiryModal()" class="hidden md:inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-brand shadow-sm hover:bg-blue-800 focus:outline-none transition">
+                    <button onclick="openInquiryModal('nav_contact')" class="hidden md:inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-brand shadow-sm hover:bg-blue-800 focus:outline-none transition">
                         <i class="fas fa-envelope mr-2"></i> Contact Us
                     </button>
                 </div>
@@ -99,7 +99,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 h-96 md:h-[500px]">
             <!-- Main large image: Drone Shot (Index 0) -->
-            <div class="md:col-span-2 md:row-span-2 relative overflow-hidden rounded-lg shadow-md group cursor-pointer" onclick="openModal(0)">
+            <div class="md:col-span-2 md:row-span-2 relative overflow-hidden rounded-lg shadow-md group cursor-pointer" onclick="openModal(0, 'grid_hero_drone')">
                 <img src="baker/2709-2711-drone.jpg" 
                      alt="Property Aerial View" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
                 <div class="absolute bottom-0 left-0 bg-gradient-to-t from-black/70 to-transparent w-full p-4">
@@ -107,7 +107,7 @@
                 </div>
             </div>
             <!-- Exterior Shot (Index 3 - Start of Exterior Group) -->
-            <div class="relative overflow-hidden rounded-lg shadow-md group cursor-pointer" onclick="openModal(3)">
+            <div class="relative overflow-hidden rounded-lg shadow-md group cursor-pointer" onclick="openModal(3, 'grid_exterior')">
                 <img src="baker/2709-2711-exterior_1817.jpeg" 
                      alt="Building Exterior" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
                      <div class="absolute bottom-0 left-0 bg-gradient-to-t from-black/70 to-transparent w-full p-2">
@@ -115,16 +115,16 @@
                     </div>
             </div>
             <!-- 2709 Shot (Index 10 - Start of 2709 Group) -->
-            <div class="relative overflow-hidden rounded-lg shadow-md group cursor-pointer" onclick="openModal(10)">
+            <div class="relative overflow-hidden rounded-lg shadow-md group cursor-pointer" onclick="openModal(10, 'grid_unit_2709')">
                 <img src="baker/2709-livingroom.jpg" 
                      alt="Lower Unit Living Room" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
             </div>
             <!-- 2711 Penthouse Shot (Index 22 - Start of Penthouse Group) -->
-            <div class="relative overflow-hidden rounded-lg shadow-md group cursor-pointer" onclick="openModal(22)">
+            <div class="relative overflow-hidden rounded-lg shadow-md group cursor-pointer" onclick="openModal(22, 'grid_penthouse')">
                 <img src="baker/2711-penthouse_8283.jpeg" 
                      alt="Penthouse Interior" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
             </div>
-            <div class="relative bg-gray-200 flex items-center justify-center rounded-lg shadow-md cursor-pointer hover:bg-gray-300 transition" onclick="openModal(0)">
+            <div class="relative bg-gray-200 flex items-center justify-center rounded-lg shadow-md cursor-pointer hover:bg-gray-300 transition" onclick="openModal(0, 'grid_view_all')">
                 <div class="text-center p-4">
                     <i class="fas fa-images text-3xl text-gray-500 mb-2"></i>
                     <p class="text-gray-600 font-medium">View All Photos</p>
@@ -317,7 +317,7 @@
                                 </div>
                             </div>
 
-                            <button onclick="openInquiryModal()" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition duration-200 shadow-md mb-3">
+                            <button onclick="openInquiryModal('sidebar_request_info')" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition duration-200 shadow-md mb-3">
                                 Request Information
                             </button>
                         </div>
@@ -365,7 +365,7 @@
     </footer>
 
     <!-- Inquiry Modal (Coming Soon) -->
-    <div id="inquiryModal" class="fixed inset-0 z-[110] hidden bg-black bg-opacity-75 overflow-y-auto h-full w-full flex items-center justify-center">
+    <div id="inquiryModal" class="fixed inset-0 z-[110] hidden bg-black bg-opacity-75 overflow-y-auto h-full w-full flex items-center justify-center" onclick="if (event.target === this) closeInquiryModal('backdrop')">
         <div class="relative p-8 border w-96 shadow-xl rounded-xl bg-white text-center transform transition-all scale-100">
             <div class="mb-4">
                 <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-blue-100">
@@ -375,32 +375,38 @@
             <h3 class="text-2xl font-bold text-gray-900 mb-2">Coming Soon</h3>
             <p class="text-gray-500 mb-6">Our online inquiry system is currently under construction.</p>
             
-            <button onclick="closeInquiryModal()" class="text-gray-500 hover:text-gray-700 font-medium text-sm">
+            <button onclick="closeInquiryModal('button')" class="text-gray-500 hover:text-gray-700 font-medium text-sm">
                 Close
             </button>
         </div>
     </div>
 
     <!-- Lightbox Modal -->
-    <div id="imageModal" class="fixed inset-0 z-[100] hidden bg-black bg-opacity-95 overflow-y-auto h-full w-full" onclick="if(event.target === this) closeModal()">
+    <div id="imageModal" class="fixed inset-0 z-[100] hidden bg-black bg-opacity-95 overflow-y-auto h-full w-full" onclick="if(event.target === this) closeModal('backdrop')">
         <div class="relative top-10 mx-auto p-5 border w-full max-w-5xl shadow-lg rounded-md bg-transparent">
             <div class="flex justify-between items-center pb-3 text-white">
                 <h3 class="text-xl font-bold" id="modalTitle">Gallery</h3>
-                <button onclick="closeModal()" class="text-white text-3xl font-bold hover:text-gray-300">&times;</button>
+                <button onclick="closeModal('button')" class="text-white text-3xl font-bold hover:text-gray-300">&times;</button>
             </div>
             <div class="mt-2 text-center">
                 <img id="modalImage" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Gallery Image" class="mx-auto max-h-[75vh] object-contain rounded-lg shadow-2xl">
                 <p id="modalCaption" class="text-white mt-4 text-lg font-medium tracking-wide"></p>
                 <div class="mt-4 flex justify-between items-center px-4">
-                     <button onclick="changeImage(-1)" class="bg-white/20 hover:bg-white/40 text-white rounded-full p-3 backdrop-blur-sm transition"><i class="fas fa-chevron-left"></i></button>
+                     <button onclick="changeImage(-1, 'button')" class="bg-white/20 hover:bg-white/40 text-white rounded-full p-3 backdrop-blur-sm transition"><i class="fas fa-chevron-left"></i></button>
                      <p class="text-gray-300 text-sm" id="imageCounter">1 / 30</p>
-                     <button onclick="changeImage(1)" class="bg-white/20 hover:bg-white/40 text-white rounded-full p-3 backdrop-blur-sm transition"><i class="fas fa-chevron-right"></i></button>
+                     <button onclick="changeImage(1, 'button')" class="bg-white/20 hover:bg-white/40 text-white rounded-full p-3 backdrop-blur-sm transition"><i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
+        function trackSiteEvent(eventName, params) {
+            if (typeof gtag === 'function') {
+                gtag('event', eventName, params || {});
+            }
+        }
+
         // Updated images array with tour flow: Drone -> Exterior -> 2709 -> 2711 Main -> 2711 Penthouse
         const images = [
             // --- DRONE SHOTS (Indices 0-2) ---
@@ -449,31 +455,54 @@
         // Inquiry Modal Logic
         const inquiryModal = document.getElementById('inquiryModal');
 
-        function openInquiryModal() {
+        function openInquiryModal(buttonLocation) {
             inquiryModal.classList.remove('hidden');
+            trackSiteEvent('inquiry_modal_open', {
+                button_location: buttonLocation || 'unspecified'
+            });
         }
 
-        function closeInquiryModal() {
+        function closeInquiryModal(closeMethod) {
             inquiryModal.classList.add('hidden');
+            trackSiteEvent('inquiry_modal_close', {
+                close_method: closeMethod || 'button'
+            });
         }
 
-        function openModal(index) {
+        function openModal(index, entryPoint) {
             currentIndex = index;
             updateModal();
             modal.classList.remove('hidden');
             document.body.classList.add('no-scroll');
+            const img = images[index];
+            trackSiteEvent('gallery_open', {
+                entry_point: entryPoint || 'unknown',
+                start_index: index,
+                image_caption: img ? img.caption : ''
+            });
         }
 
-        function closeModal() {
+        function closeModal(closeMethod) {
+            trackSiteEvent('gallery_close', {
+                close_method: closeMethod || 'unknown',
+                last_index: currentIndex,
+                image_caption: images[currentIndex] ? images[currentIndex].caption : ''
+            });
             modal.classList.add('hidden');
             document.body.classList.remove('no-scroll');
         }
 
-        function changeImage(direction) {
+        function changeImage(direction, interactionSource) {
             currentIndex += direction;
             if (currentIndex >= images.length) currentIndex = 0;
             if (currentIndex < 0) currentIndex = images.length - 1;
             updateModal();
+            trackSiteEvent('gallery_navigate', {
+                direction: direction > 0 ? 'next' : 'prev',
+                interaction: interactionSource || 'button',
+                index: currentIndex,
+                image_caption: images[currentIndex] ? images[currentIndex].caption : ''
+            });
         }
 
         function updateModal() {
@@ -485,14 +514,38 @@
         // Keyboard navigation
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
-                closeModal();
-                closeInquiryModal();
+                if (!modal.classList.contains('hidden')) closeModal('keyboard_escape');
+                else if (!inquiryModal.classList.contains('hidden')) closeInquiryModal('keyboard_escape');
             }
             if (!modal.classList.contains('hidden')) {
-                if (event.key === 'ArrowLeft') changeImage(-1);
-                if (event.key === 'ArrowRight') changeImage(1);
+                if (event.key === 'ArrowLeft') changeImage(-1, 'keyboard');
+                if (event.key === 'ArrowRight') changeImage(1, 'keyboard');
             }
         });
+
+        document.addEventListener('click', function (event) {
+            const a = event.target.closest && event.target.closest('a[href]');
+            if (!a || !a.getAttribute('href')) return;
+            const href = a.getAttribute('href');
+            if (href === '#' || href === '') return;
+            if (href.indexOf('mailto:') === 0) {
+                trackSiteEvent('link_click', { link_type: 'mailto', link_url: href });
+            } else if (href.indexOf('tel:') === 0) {
+                trackSiteEvent('link_click', { link_type: 'tel', link_url: href });
+            } else {
+                try {
+                    const u = new URL(a.href, window.location.href);
+                    if (u.origin !== window.location.origin) {
+                        trackSiteEvent('outbound_link_click', {
+                            link_url: u.href,
+                            link_text: (a.textContent || '').trim().slice(0, 120)
+                        });
+                    } else {
+                        trackSiteEvent('link_click', { link_type: 'internal', link_url: u.pathname + u.search + u.hash });
+                    }
+                } catch (e) { /* ignore invalid href */ }
+            }
+        }, true);
     </script>
 </body>
 </html>
