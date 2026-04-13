@@ -27,6 +27,12 @@
     <meta name="theme-color" content="#2c5282">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 
+    <script>
+      if (location.protocol === 'http:' && location.hostname === 'unionandbaker.com') {
+        location.replace(`https://${location.host}${location.pathname}${location.search}${location.hash}`);
+      }
+    </script>
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
