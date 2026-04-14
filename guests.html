@@ -107,7 +107,7 @@
                     <img src="2709/2709-05-livingroom-01.JPG" alt="Unit 2709 living room" class="h-full w-full object-cover">
                 </button>
                 <button onclick="openGallery(4, 'gallery_grid_show_all')" class="relative rounded-2xl overflow-hidden bg-gray-900/90 text-white hidden md:flex items-center justify-center text-center px-4">
-                    <span class="font-semibold">Show all 18 photos</span>
+                    <span class="font-semibold">Show all 24 photos</span>
                 </button>
             </div>
             <button onclick="openGallery(0, 'gallery_mobile_show_all')" class="mt-3 md:hidden w-full border border-gray-300 rounded-xl py-3 text-sm font-semibold text-gray-800">Show all photos</button>
@@ -208,7 +208,7 @@
     <div id="galleryModal" class="fixed inset-0 z-50 hidden bg-black/90 p-4 sm:p-6" onclick="if (event.target === this) closeGallery()">
         <div class="h-full w-full flex flex-col">
             <div class="flex items-center justify-between text-white mb-4">
-                <p id="galleryCounter" class="text-sm">1 / 18</p>
+                <p id="galleryCounter" class="text-sm">1 / 24</p>
                 <button type="button" class="text-3xl leading-none" onclick="closeGallery()">&times;</button>
             </div>
             <div class="relative flex-1 min-h-0 flex items-center justify-center">
@@ -289,7 +289,33 @@
             // Living room
             { src: "2709/2709-05-livingroom-01.JPG", caption: "Living room" },
             { src: "2709/2709-05-livingroom-02.JPG", caption: "Living room seating area" },
-            { src: "2709/2709-05-livingroom-04.JPG", caption: "Living room perspective" }
+            { src: "2709/2709-05-livingroom-04.JPG", caption: "Living room perspective" },
+
+            // Nearby amenities (Creative Commons / public domain)
+            {
+                src: "https://upload.wikimedia.org/wikipedia/commons/c/cd/Tunnel_Tops_Park_with_Alcatraz.jpg",
+                caption: "1.3 miles from 2709 • Presidio Tunnel Tops. Photo: Dicklyon (Wikimedia Commons), CC BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0/"
+            },
+            {
+                src: "https://upload.wikimedia.org/wikipedia/commons/9/93/Crissy_Field_beach_and_Golden_Gate_Bridge.jpg",
+                caption: "1.6 miles from 2709 • East Beach (Crissy Field). Photo: Brocken Inaglory (Wikimedia Commons), Public Domain (CC0)."
+            },
+            {
+                src: "https://upload.wikimedia.org/wikipedia/commons/a/a3/Fort_Point_National_Historic_Site_and_Golden_Gate_Bridge.jpg",
+                caption: "2.3 miles from 2709 • Golden Gate Bridge from Fort Point (south side). Photo: Brocken Inaglory (Wikimedia Commons), CC BY-SA 3.0 https://creativecommons.org/licenses/by-sa/3.0/"
+            },
+            {
+                src: "https://upload.wikimedia.org/wikipedia/commons/3/33/Lyon_street_stairs_02.jpg",
+                caption: "0.4 miles from 2709 • Lyon Street Steps (top looking down). Photo: Sailko (Wikimedia Commons), CC BY-SA 3.0 https://creativecommons.org/licenses/by-sa/3.0/"
+            },
+            {
+                src: "https://upload.wikimedia.org/wikipedia/commons/d/d6/Palace_of_Fine_Arts_SF_CA_%28cropped%29.jpg",
+                caption: "0.9 miles from 2709 • Palace of Fine Arts. Photo: Kevin Cole (Wikimedia Commons), CC BY 2.0 https://creativecommons.org/licenses/by/2.0/"
+            },
+            {
+                src: "https://upload.wikimedia.org/wikipedia/commons/9/91/Fillmore_Street%2C_between_Broadway_and_Vallejo%2C_looking_North%2C_San_Francisco.jpg",
+                caption: "1.2 miles from 2709 • Pacific Heights / Billionaires Row area. Photo: Pavel Spindler (Wikimedia Commons), CC BY 3.0 https://creativecommons.org/licenses/by/3.0/"
+            }
         ];
 
         const modal = document.getElementById("galleryModal");
