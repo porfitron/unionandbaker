@@ -67,7 +67,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="site-base.css">
 
     <style>
         body {
@@ -97,10 +98,6 @@
             width: 100%;
             height: 100%;
         }
-        /* Hide scrollbar for gallery modal */
-        .no-scroll {
-            overflow: hidden;
-        }
     </style>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N42PWECB4"></script>
@@ -116,13 +113,13 @@
 
     <!-- Navigation / Top Bar -->
     <nav class="bg-white shadow-sm sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="page-shell">
             <div class="flex justify-between h-16 items-center">
                 <div class="flex items-center">
                     <span class="text-xl font-bold text-gray-900 tracking-tight">Union and Baker, LLC</span>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <button onclick="openInquiryModal('nav_contact')" class="hidden md:inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-brand shadow-sm hover:bg-blue-800 focus:outline-none transition">
+                    <button onclick="openContactModal('nav_contact')" class="hidden md:inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-brand shadow-sm hover:bg-blue-800 focus:outline-none transition">
                         <i class="fas fa-envelope mr-2"></i> Contact Us
                     </button>
                 </div>
@@ -132,7 +129,7 @@
 
     <!-- Header Section -->
     <div class="bg-white border-b border-gray-200 pb-8 pt-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="page-shell">
             <div class="md:flex md:items-center md:justify-between">
                 <div class="flex-1 min-w-0">
                     <h2 class="text-sm font-semibold text-blue-600 uppercase tracking-wide">Property Prospectus</h2>
@@ -151,7 +148,7 @@
     </div>
 
     <!-- Image Gallery -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+    <div class="page-shell mt-6">
         <div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 md:h-[500px]">
             <!-- Main large image: Drone Shot (Index 0) -->
             <div class="relative aspect-[4/3] w-full overflow-hidden rounded-lg shadow-md group cursor-pointer md:col-span-2 md:row-span-2 md:aspect-auto md:h-full" onclick="openModal(0, 'grid_hero_drone')">
@@ -189,7 +186,7 @@
     </div>
 
     <!-- Main Content -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 mb-16">
+    <div class="page-shell mt-8 mb-16">
         <div class="md:grid md:grid-cols-3 md:gap-8">
             
             <!-- Left Column: Details -->
@@ -380,7 +377,7 @@
                                 </div>
                             </div>
 
-                            <button onclick="openInquiryModal('sidebar_request_info')" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition duration-200 shadow-md mb-3">
+                            <button onclick="openContactModal('sidebar_request_info')" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition duration-200 shadow-md mb-3">
                                 Request Information
                             </button>
                         </div>
@@ -416,36 +413,48 @@
 
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left md:flex justify-between items-center">
-            <div class="mb-4 md:mb-0">
-                <h4 class="font-bold text-lg">Union and Baker, LLC</h4>
-                <p class="text-gray-400 text-sm">San Francisco real estate.</p>
+        <div class="page-shell flex flex-col gap-4 text-center md:flex-row md:items-center md:justify-between md:text-left">
+            <div>
+                <h4 class="text-lg font-bold">Union and Baker, LLC</h4>
+                <p class="mt-1 text-sm text-gray-400">San Francisco real estate.</p>
             </div>
-            <div class="text-sm text-gray-400">
-                &copy; <script>document.write(new Date().getFullYear())</script> Union and Baker, LLC. Listing ID: BAKER-2709
+            <div class="text-sm text-gray-400 md:text-right">
+                <p>
+                    &copy; <script>document.write(new Date().getFullYear())</script>
+                    <a href="/" class="transition hover:text-gray-300">Union and Baker, LLC</a>.
+                </p>
             </div>
         </div>
     </footer>
 
-    <!-- Inquiry Modal (Coming Soon) -->
-    <div id="inquiryModal" class="fixed inset-0 z-[110] hidden bg-black bg-opacity-75 overflow-y-auto h-full w-full flex items-center justify-center" onclick="if (event.target === this) closeInquiryModal('backdrop')">
-        <div class="relative p-8 border w-96 shadow-xl rounded-xl bg-white text-center transform transition-all scale-100">
-            <div class="mb-4">
-                <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-blue-100">
-                    <i class="fas fa-clock text-blue-600 text-xl"></i>
-                </div>
+    <!-- Instagram contact (same markup as guests.html) -->
+    <div id="contactModal" class="fixed inset-0 z-[110] hidden bg-black/60 p-4" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle" onclick="if (event.target === this) closeContactModal('backdrop')">
+        <div class="max-w-md mx-auto mt-16 sm:mt-24 rounded-2xl overflow-hidden shadow-2xl bg-white">
+            <div class="instagram-gradient-bg px-6 py-5 text-white">
+                <p class="text-xs font-bold uppercase tracking-[0.2em]">Connect with us</p>
+                <h3 id="contactModalTitle" class="mt-1 text-xl font-bold">Contact</h3>
             </div>
-            <h3 class="text-2xl font-bold text-gray-900 mb-2">Coming Soon</h3>
-            <p class="text-gray-500 mb-4">Our online inquiry system is currently under construction.</p>
-            <p class="text-sm font-medium text-gray-700 mb-3">Follow Us on Instagram</p>
-            <a href="https://instagram.com/casavuvuzela" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-3 mb-6" aria-label="Open Instagram @casavuvuzela in a new tab">
-                <span class="inline-flex items-center justify-center h-12 w-12 rounded-full bg-gradient-to-br from-purple-600 via-pink-500 to-amber-400 text-white text-xl shadow-md">
-                    <i class="fab fa-instagram" aria-hidden="true"></i>
-                </span>
-                <span class="text-base font-semibold text-gray-900">@casavuvuzela</span>
-            </a>
-            <div class="border-t border-gray-200 pt-4">
-                <button type="button" onclick="closeInquiryModal('button')" class="text-gray-500 hover:text-gray-700 font-medium text-sm">
+            <div class="px-6 py-6">
+                <div class="flex items-center gap-3">
+                    <span class="inline-flex items-center justify-center rounded-xl p-2 instagram-gradient-bg">
+                        <svg viewBox="0 0 24 24" class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
+                            <circle cx="12" cy="12" r="4"></circle>
+                            <circle cx="17.5" cy="6.5" r="1"></circle>
+                        </svg>
+                    </span>
+                    <div>
+                        <p class="text-sm text-gray-500">Instagram</p>
+                        <p class="font-semibold text-gray-900">@casavuvuzela</p>
+                    </div>
+                </div>
+                <p class="mt-4 text-sm text-gray-600">
+                    For property inquiries, investment interest, or guest availability, message us directly on Instagram.
+                </p>
+                <a href="https://instagram.com/casavuvuzela" target="_blank" rel="noopener noreferrer" class="mt-5 inline-flex w-full items-center justify-center rounded-lg instagram-gradient-bg px-4 py-3 text-sm font-semibold text-white transition hover:opacity-95">
+                    Open Instagram
+                </a>
+                <button type="button" onclick="closeContactModal('button')" class="mt-3 inline-flex w-full items-center justify-center rounded-lg border border-gray-300 px-4 py-3 text-sm font-semibold text-gray-700 transition hover:bg-gray-50">
                     Close
                 </button>
             </div>
@@ -476,13 +485,8 @@
         </div>
     </div>
 
+    <script src="site-shared.js"></script>
     <script>
-        function trackSiteEvent(eventName, params) {
-            if (typeof gtag === 'function') {
-                gtag('event', eventName, params || {});
-            }
-        }
-
         // Updated images array with tour flow: Drone -> Exterior -> 2709 -> 2711 Main -> 2711 Penthouse
         const images = [
             // --- DRONE SHOTS (Indices 0-2) ---
@@ -527,20 +531,21 @@
         const modalCaption = document.getElementById('modalCaption');
         const counter = document.getElementById('imageCounter');
 
-        // Inquiry Modal Logic
-        const inquiryModal = document.getElementById('inquiryModal');
+        const contactModal = document.getElementById('contactModal');
 
-        function openInquiryModal(buttonLocation) {
-            inquiryModal.classList.remove('hidden');
+        function openContactModal(buttonLocation) {
+            contactModal.classList.remove('hidden');
+            document.body.classList.add('no-scroll');
             trackSiteEvent('inquiry_modal_open', {
                 button_location: buttonLocation || 'unspecified'
             });
         }
 
-        function closeInquiryModal(closeMethod) {
-            inquiryModal.classList.add('hidden');
+        function closeContactModal(closeMethod) {
+            contactModal.classList.add('hidden');
+            document.body.classList.remove('no-scroll');
             trackSiteEvent('inquiry_modal_close', {
-                close_method: closeMethod || 'button'
+                close_method: closeMethod || 'button_or_backdrop'
             });
         }
 
@@ -593,38 +598,14 @@
         // Keyboard navigation
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
-                if (!modal.classList.contains('hidden')) closeModal('keyboard_escape');
-                else if (!inquiryModal.classList.contains('hidden')) closeInquiryModal('keyboard_escape');
+                if (!contactModal.classList.contains('hidden')) closeContactModal('keyboard_escape');
+                else if (!modal.classList.contains('hidden')) closeModal('keyboard_escape');
             }
             if (!modal.classList.contains('hidden')) {
                 if (event.key === 'ArrowLeft') changeImage(-1, 'keyboard');
                 if (event.key === 'ArrowRight') changeImage(1, 'keyboard');
             }
         });
-
-        document.addEventListener('click', function (event) {
-            const a = event.target.closest && event.target.closest('a[href]');
-            if (!a || !a.getAttribute('href')) return;
-            const href = a.getAttribute('href');
-            if (href === '#' || href === '') return;
-            if (href.indexOf('mailto:') === 0) {
-                trackSiteEvent('link_click', { link_type: 'mailto', link_url: href });
-            } else if (href.indexOf('tel:') === 0) {
-                trackSiteEvent('link_click', { link_type: 'tel', link_url: href });
-            } else {
-                try {
-                    const u = new URL(a.href, window.location.href);
-                    if (u.origin !== window.location.origin) {
-                        trackSiteEvent('outbound_link_click', {
-                            link_url: u.href,
-                            link_text: (a.textContent || '').trim().slice(0, 120)
-                        });
-                    } else {
-                        trackSiteEvent('link_click', { link_type: 'internal', link_url: u.pathname + u.search + u.hash });
-                    }
-                } catch (e) { /* ignore invalid href */ }
-            }
-        }, true);
     </script>
 </body>
 </html>

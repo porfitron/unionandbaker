@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unit 2709 | Airbnb-Style Guest Listing</title>
-    <meta name="description" content="Airbnb-style guest listing for Unit 2709 at Baker & Union in Cow Hollow, San Francisco. 2-bedroom, 2-bath designer flat with curated amenities and prime neighborhood access.">
+    <title>Unit 2709 | Short-term guest listing</title>
+    <meta name="description" content="Short-term guest listing for Unit 2709 at Baker & Union in Cow Hollow, San Francisco. 2-bedroom, 2-bath designer flat with curated amenities and prime neighborhood access.">
     <meta name="keywords" content="San Francisco short-term rental, Cow Hollow rental, Unit 2709, Baker Street guest stay, furnished 2 bedroom San Francisco">
     <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
     <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
@@ -30,7 +30,8 @@
       }
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="site-base.css">
     <style>
         body {
             font-family: "Inter", sans-serif;
@@ -46,12 +47,6 @@
         .airbnb-rose-bg:hover {
             background-color: #e61e4d;
         }
-        .no-scroll {
-            overflow: hidden;
-        }
-        .instagram-gradient-bg {
-            background: linear-gradient(135deg, #f58529 0%, #dd2a7b 45%, #8134af 75%, #515bd4 100%);
-        }
     </style>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N42PWECB4"></script>
@@ -65,7 +60,7 @@
 </head>
 <body>
     <header class="border-b border-gray-200 bg-white sticky top-0 z-40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+        <div class="page-shell h-20 flex items-center justify-between">
             <div class="flex items-center gap-3">
                 <span class="text-2xl airbnb-rose">&#9829;</span>
                 <span class="text-xl font-bold text-gray-900 tracking-tight">Union and Baker - Unit 2709</span>
@@ -76,7 +71,7 @@
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+    <main class="page-shell py-8 sm:py-10">
         <section>
             <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900">Designer Cow Hollow Flat Near Presidio & Union Street</h1>
             <p class="mt-3 text-gray-600 text-base sm:text-lg">Entire flat in San Francisco, California</p>
@@ -198,10 +193,18 @@
         </section>
     </main>
 
-    <footer class="border-t border-gray-200 py-6">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-gray-500 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-            <p>&copy; <script>document.write(new Date().getFullYear())</script> Union and Baker, LLC</p>
-            <p>Unit 2709 &middot; Cow Hollow, San Francisco</p>
+    <footer class="border-t border-gray-200 bg-white py-8 text-gray-700">
+        <div class="page-shell flex flex-col gap-4 text-center md:flex-row md:items-center md:justify-between md:text-left">
+            <div>
+                <h4 class="text-lg font-bold text-gray-900">Union and Baker, LLC</h4>
+                <p class="mt-1 text-sm text-gray-600">Unit 2709 &middot; Cow Hollow, San Francisco</p>
+            </div>
+            <div class="text-sm text-gray-500 md:text-right">
+                <p>
+                    &copy; <script>document.write(new Date().getFullYear())</script>
+                    <a href="/" class="transition hover:text-gray-700">Union and Baker, LLC</a>
+                </p>
+            </div>
         </div>
     </footer>
 
@@ -220,11 +223,11 @@
         </div>
     </div>
 
-    <div id="contactModal" class="fixed inset-0 z-50 hidden bg-black/60 p-4" onclick="if (event.target === this) closeContactModal()">
+    <div id="contactModal" class="fixed inset-0 z-[110] hidden bg-black/60 p-4" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle" onclick="if (event.target === this) closeContactModal('backdrop')">
         <div class="max-w-md mx-auto mt-16 sm:mt-24 rounded-2xl overflow-hidden shadow-2xl bg-white">
             <div class="instagram-gradient-bg px-6 py-5 text-white">
                 <p class="text-xs font-bold uppercase tracking-[0.2em]">Connect with us</p>
-                <h3 class="mt-1 text-xl font-bold">Reservations & Contact</h3>
+                <h3 id="contactModalTitle" class="mt-1 text-xl font-bold">Contact</h3>
             </div>
             <div class="px-6 py-6">
                 <div class="flex items-center gap-3">
@@ -241,25 +244,20 @@
                     </div>
                 </div>
                 <p class="mt-4 text-sm text-gray-600">
-                    For booking inquiries and questions, message us directly on Instagram.
+                    For property inquiries, investment interest, or guest availability, message us directly on Instagram.
                 </p>
                 <a href="https://instagram.com/casavuvuzela" target="_blank" rel="noopener noreferrer" class="mt-5 inline-flex w-full items-center justify-center rounded-lg instagram-gradient-bg px-4 py-3 text-sm font-semibold text-white transition hover:opacity-95">
                     Open Instagram
                 </a>
-                <button type="button" onclick="closeContactModal()" class="mt-3 inline-flex w-full items-center justify-center rounded-lg border border-gray-300 px-4 py-3 text-sm font-semibold text-gray-700 transition hover:bg-gray-50">
+                <button type="button" onclick="closeContactModal('button')" class="mt-3 inline-flex w-full items-center justify-center rounded-lg border border-gray-300 px-4 py-3 text-sm font-semibold text-gray-700 transition hover:bg-gray-50">
                     Close
                 </button>
             </div>
         </div>
     </div>
 
+    <script src="site-shared.js"></script>
     <script>
-        function trackSiteEvent(eventName, params) {
-            if (typeof gtag === "function") {
-                gtag("event", eventName, params || {});
-            }
-        }
-
         const photos = [
             // Exterior photos
             { src: "baker/2709-2711-drone.jpg", caption: "Aerial view of Baker & Union" },
@@ -356,11 +354,11 @@
             document.body.classList.remove("no-scroll");
         }
 
-        function openContactModal() {
+        function openContactModal(buttonLocation) {
             contactModal.classList.remove("hidden");
             document.body.classList.add("no-scroll");
             trackSiteEvent("inquiry_modal_open", {
-                button_location: "guest_contact_cta"
+                button_location: buttonLocation || "guest_contact_cta"
             });
         }
 
@@ -386,7 +384,7 @@
         contactCtas.forEach(function(cta) {
             cta.addEventListener("click", function(event) {
                 event.preventDefault();
-                openContactModal();
+                openContactModal("guest_contact_cta");
             });
         });
 
@@ -401,33 +399,6 @@
                 if (event.key === "ArrowLeft") changePhoto(-1);
             }
         });
-
-        document.addEventListener("click", function(event) {
-            const a = event.target.closest && event.target.closest("a[href]");
-            if (!a || !a.getAttribute("href")) return;
-            const href = a.getAttribute("href");
-            if (href === "#" || href === "") return;
-            if (href.indexOf("mailto:") === 0) {
-                trackSiteEvent("link_click", { link_type: "mailto", link_url: href });
-            } else if (href.indexOf("tel:") === 0) {
-                trackSiteEvent("link_click", { link_type: "tel", link_url: href });
-            } else {
-                try {
-                    const u = new URL(a.href, window.location.href);
-                    if (u.origin !== window.location.origin) {
-                        trackSiteEvent("outbound_link_click", {
-                            link_url: u.href,
-                            link_text: (a.textContent || "").trim().slice(0, 120)
-                        });
-                    } else {
-                        trackSiteEvent("link_click", {
-                            link_type: "internal",
-                            link_url: u.pathname + u.search + u.hash
-                        });
-                    }
-                } catch (e) { /* ignore invalid href */ }
-            }
-        }, true);
     </script>
 </body>
 </html>

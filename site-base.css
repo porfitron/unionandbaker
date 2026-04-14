@@ -1,0 +1,30 @@
+/* Layout shell matching Tailwind max-w-7xl + mx-auto + px-4 sm:px-6 lg:px-8 */
+.page-shell {
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+    .page-shell {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .page-shell {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+.instagram-gradient-bg {
+    background: linear-gradient(135deg, #f58529 0%, #dd2a7b 45%, #8134af 75%, #515bd4 100%);
+}
